@@ -183,10 +183,25 @@ let servicesData = [
 ];
 
 export async function GET(request) {
-  return new Response(JSON.stringify(servicesData), {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const url = new URL(request.url);
+  const category = url.searchParams.get("category");
+
+  if (category) {
+    const filteredServices = servicesData.filter(
+      (service) => service.kategori === category
+    );
+    return new Response(JSON.stringify(filteredServices), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } else {
+    return new Response(JSON.stringify(servicesData), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 }

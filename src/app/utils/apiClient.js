@@ -13,38 +13,13 @@ export async function fetchServices() {
   return response.json();
 }
 
-// Function to add a new service
-export async function addService(service) {
-  const response = await fetch(BASE_URL, {
-    method: "POST",
+// Function to fetch services by category
+export async function fetchServicesByCategory(category) {
+  const response = await fetch(`${BASE_URL}?category=${category}`, {
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(service),
-  });
-  return response.json();
-}
-
-// Function to update a service
-export async function updateService(service) {
-  const response = await fetch(BASE_URL, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(service),
-  });
-  return response.json();
-}
-
-// Function to delete a service
-export async function deleteService(id) {
-  const response = await fetch(BASE_URL, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ id }),
   });
   return response.json();
 }
