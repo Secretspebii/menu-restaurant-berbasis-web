@@ -20,11 +20,11 @@ let servicesData = [
   },
   {
     id: 3,
-    name: "Best ambrosia salad",
+    name: "Best ambrosia Salad",
     description:
       "Ambrosia salad adalah hidangan penutup klasik yang terkenal di Amerika Serikat, biasanya terdiri dari campuran buah-buahan, marshmallow, dan krim. Resep ini adalah salah satu variasi yang populer dan lezat:",
     harga: 23000,
-    gambar: "/image/best Ambrosia Salad.jpeg",
+    gambar: "/image/Best Ambrosia Salad.jpeg",
     kategori: "makanan",
   },
   {

@@ -24,7 +24,7 @@ const ListMenu = () => {
     <>
       <div className="flex flex-col items-center justify-center p-10">
         <h1 className="text-3xl font-bold text-[#FED03D] mb-10">
-          x X Daftar Menu Makanan X x
+          x X Daftar Menu Restaurant Kampung X x
         </h1>
         <div className="grid grid-cols-4 gap-8">
           {services.map((service) => (
