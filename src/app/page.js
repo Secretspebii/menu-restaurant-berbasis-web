@@ -1,17 +1,12 @@
-import Image from "next/image";
+import ListMenu from "./component/listmenu/listMenu";
 
-export default function Home() {
+const Home = () => {
   return (
-    <main>
-      <div>
-        <h1>home page</h1>
-        <Image
-          src="/image/telur dadar.jpeg"
-          alt="Picture of the author"
-          width={500}
-          height={500}
-        />
+    <main className="flex justify-end w-full bg-[#1A1A1A]">
+      <div className="w-10/12">
+        <ListMenu />
       </div>
     </main>
   );
-}
+};
+export default Home;
