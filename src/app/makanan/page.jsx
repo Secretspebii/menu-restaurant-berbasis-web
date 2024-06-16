@@ -7,11 +7,19 @@ const MakananPage = () => {
   const [makanan, setMakanan] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const data = await fetchMenuByCategory("makanan");
-      setMakanan(data);
-    }
-    fetchData();
+    const getMakanan = async () => {
+      try {
+        const response = await fetchMenuByCategory("makanan");
+        if (response.status === 200 && Array.isArray(response.data)) {
+          setMakanan(response.data);
+        } else {
+          console.error("Fetched data is not in the expected format", response);
+        }
+      } catch (error) {
+        console.error("Error fetching menu data:", error);
+      }
+    };
+    getMakanan();
   }, []);
 
   return (

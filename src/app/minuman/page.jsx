@@ -7,11 +7,19 @@ const MinumanPage = () => {
   const [minuman, setMinuman] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const data = await fetchMenuByCategory("minuman");
-      setMinuman(data);
-    }
-    fetchData();
+    const getMinuman = async () => {
+      try {
+        const response = await fetchMenuByCategory("minuman");
+        if (response.status === 200 && Array.isArray(response.data)) {
+          setMinuman(response.data);
+        } else {
+          console.error("Fetched data is not in the expected format", response);
+        }
+      } catch (error) {
+        console.error("Error fetching menu data:", error);
+      }
+    };
+    getMinuman();
   }, []);
 
   return (

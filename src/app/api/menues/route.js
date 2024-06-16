@@ -1,3 +1,5 @@
+const { NextResponse } = require("next/server");
+
 // src/app/api/services/route.js
 let menuData = [
   {
@@ -183,23 +185,42 @@ let menuData = [
 ];
 
 export async function GET(request) {
-  const url = new URL(request.url);
-  const category = url.searchParams.get("category");
-
-  if (category) {
+  if (request.nextUrl.searchParams.get("category")) {
+    const url = new URL(request.url);
+    const category = url.searchParams.get("category");
     const filteredMenu = menuData.filter((menu) => menu.kategori === category);
-    return new Response(JSON.stringify(filteredMenu), {
+    return NextResponse.json({
       status: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      message: "succes",
+      data: filteredMenu,
     });
   } else {
-    return new Response(JSON.stringify(menuData), {
+    return NextResponse.json({
       status: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      message: "succes",
+      data: menuData,
     });
   }
 }
+
+// export async function GET(request) {
+//   const url = new URL(request.url);
+//   const category = url.searchParams.get("category");
+
+//   if (category) {
+//     const filteredMenu = menuData.filter((menu) => menu.kategori === category);
+//     return new Response(JSON.stringify(filteredMenu), {
+//       status: 200,
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//   } else {
+//     return new Response(JSON.stringify(menuData), {
+//       status: 200,
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//   }
+// }
