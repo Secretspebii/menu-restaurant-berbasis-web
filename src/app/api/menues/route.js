@@ -1,5 +1,5 @@
 // src/app/api/services/route.js
-let servicesData = [
+let menuData = [
   {
     id: 1,
     name: "telur dadar jepang",
@@ -187,17 +187,15 @@ export async function GET(request) {
   const category = url.searchParams.get("category");
 
   if (category) {
-    const filteredServices = servicesData.filter(
-      (service) => service.kategori === category
-    );
-    return new Response(JSON.stringify(filteredServices), {
+    const filteredMenu = menuData.filter((menu) => menu.kategori === category);
+    return new Response(JSON.stringify(filteredMenu), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
       },
     });
   } else {
-    return new Response(JSON.stringify(servicesData), {
+    return new Response(JSON.stringify(menuData), {
       status: 200,
       headers: {
         "Content-Type": "application/json",

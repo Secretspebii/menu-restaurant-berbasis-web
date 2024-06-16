@@ -1,14 +1,14 @@
 // src/pages/makanan/page.jsx
 "use client";
 import React, { useEffect, useState } from "react";
-import { fetchServicesByCategory } from "../utils/apiClient";
+import { fetchMenuByCategory } from "../utils/apiClient";
 import Image from "next/image";
 const MakananPage = () => {
   const [makanan, setMakanan] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchServicesByCategory("makanan");
+      const data = await fetchMenuByCategory("makanan");
       setMakanan(data);
     }
     fetchData();
@@ -22,16 +22,16 @@ const MakananPage = () => {
             x X Daftar Menu Makanan X x
           </h1>
           <div className="grid grid-cols-4 gap-8">
-            {makanan.map((item) => (
+            {makanan.map((menu) => (
               <div
-                key={item.id}
+                key={menu.id}
                 className="max-w-sm bg-[#2F2F2F] rounded-sm shadow-xl shadow-white-500/50"
               >
                 <a href="#">
                   <Image
                     className="rounded-sm"
-                    src={item.gambar}
-                    alt={item.name}
+                    src={menu.gambar}
+                    alt={menu.name}
                     width={500}
                     height={500}
                   />
@@ -39,14 +39,14 @@ const MakananPage = () => {
                 <div className="p-5">
                   <a href="#">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
-                      {item.name}
+                      {menu.name}
                     </h5>
                   </a>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    {item.description}
+                    {menu.description}
                   </p>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    {item.harga}
+                    {menu.harga}
                   </p>
                 </div>
               </div>

@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { fetchServices } from "@/app/utils/apiClient";
+import { fetchMenu } from "@/app/utils/apiClient";
 const ListMenu = () => {
-  const [services, setServices] = useState([
+  const [menues, setMenues] = useState([
     {
       name: "",
       description: "",
@@ -13,11 +13,11 @@ const ListMenu = () => {
   ]);
 
   useEffect(() => {
-    async function getServices() {
-      const data = await fetchServices();
-      setServices(data);
+    async function getMenues() {
+      const data = await fetchMenu();
+      setMenues(data);
     }
-    getServices();
+    getMenues();
   }, []);
 
   return (
@@ -27,16 +27,16 @@ const ListMenu = () => {
           x X Daftar Menu Restaurant Kampung X x
         </h1>
         <div className="grid grid-cols-4 gap-8">
-          {services.map((service) => (
+          {menues.map((menu) => (
             <div
-              key={service.id}
+              key={menu.id}
               className="max-w-sm bg-[#2F2F2F] rounded-sm shadow-xl shadow-white-500/50"
             >
               <a href="#">
                 <Image
                   className="rounded-sm"
-                  src={service.gambar}
-                  alt={service.name}
+                  src={menu.gambar}
+                  alt={menu.name}
                   width={500}
                   height={500}
                 />
@@ -44,14 +44,14 @@ const ListMenu = () => {
               <div className="p-5">
                 <a href="#">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
-                    {service.name}
+                    {menu.name}
                   </h5>
                 </a>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  {service.description}
+                  {menu.description}
                 </p>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  {service.harga}
+                  {menu.harga}
                 </p>
               </div>
             </div>

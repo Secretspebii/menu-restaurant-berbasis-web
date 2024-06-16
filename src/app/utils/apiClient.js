@@ -1,9 +1,9 @@
 // src/utils/apiClient.js
 
-const BASE_URL = "/api/services";
+const BASE_URL = "/api/menues";
 
 // Function to fetch all services
-export async function fetchServices() {
+export async function fetchMenu() {
   const response = await fetch(BASE_URL, {
     method: "GET",
     headers: {
@@ -14,7 +14,7 @@ export async function fetchServices() {
 }
 
 // Function to fetch services by category
-export async function fetchServicesByCategory(category) {
+export async function fetchMenuByCategory(category) {
   const response = await fetch(`${BASE_URL}?category=${category}`, {
     method: "GET",
     headers: {
